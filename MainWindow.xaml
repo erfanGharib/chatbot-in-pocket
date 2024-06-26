@@ -1,0 +1,95 @@
+﻿<Window x:Class="chatbot_in_pocket.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:chatbot_in_pocket"
+    xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+    mc:Ignorable="d"
+    Title="Chatbot In Pocket" 
+    Height="670" 
+    Width="370" 
+    Background="#FF212121" 
+    Foreground="#FFE8E8E8" 
+    WindowStyle="None" 
+    MinHeight="670" 
+    MaxHeight="670" 
+    MinWidth="450" 
+    MaxWidth="450" 
+    AllowsTransparency="True" 
+    ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+    PreviewMouseDown="Window_PreviewMouseDown" 
+    MouseLeave="Window_MouseLeave" 
+    Icon="/Resources/Images/logo.ico" 
+    FontFamily="{StaticResource Overpass}"
+ >
+    <Window.Resources>
+        <!-- Remove button hover background -->
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border BorderBrush="#33FFFFFF" BorderThickness="1">
+        <Grid Height="670">
+            <Border BorderBrush="#33FFFFFF" BorderThickness="1" Margin="0,26,0,643" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+            </Border>
+
+            <ComboBox 
+                x:Name="chatbotsComboBox" 
+                BorderBrush="{x:Null}" 
+                Background="{x:Null}" 
+                BorderThickness="0,0,0,0" 
+                IsReadOnly="True" 
+                Padding="6,0,0,0" 
+                Margin="0,0,348,643" 
+                Height="27" 
+                MaxHeight="31" 
+                Width="100"
+            />
+            <Wpf:WebView2 x:Name="webView" Source="http://google.com" Margin="0,28,0,0"/>
+
+            <Button ToolTip="Show On All Desktops" x:Name="showOnAllDesktopsButton" Width="27" Height="27" VerticalAlignment="Top" Margin="367,0,54,0" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0,0,0,0">
+                <Image Height="9" Width="9">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="300" UriSource="/Resources/Images/multi-desktop.ico" />
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button ToolTip="Pin" x:Name="pinButton" Width="27" Height="27" VerticalAlignment="Top" Margin="394,0,27,0" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0,0,0,0">
+                <Image Height="9" Width="9">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="300" UriSource="/Resources/Images/pin.ico" />
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button ToolTip="Close" x:Name="closeButton" Width="27" Height="27" VerticalAlignment="Top" Margin="421,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Height="7" Width="7">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="300" UriSource="/Resources/Images/close.ico" />
+                    </Image.Source>
+                </Image>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
