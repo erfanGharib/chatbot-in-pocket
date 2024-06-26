@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>chatbot_in_pocket</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyTitle>Chatbot In Pocket</AssemblyTitle>
+    <ApplicationIcon>Resources\Images\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\UserControls\**" />
+    <EmbeddedResource Remove="Helpers\UserControls\**" />
+    <None Remove="Helpers\UserControls\**" />
+    <Page Remove="Helpers\UserControls\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="close.png" />
+    <None Remove="Resources\Fonts\Overpass-Regular.ttf" />
+    <None Remove="Resources\Images\close.ico" />
+    <None Remove="Resources\Images\logo.ico" />
+    <None Remove="Resources\Images\multi-desktop.ico" />
+    <None Remove="Resources\Images\pin.ico" />
+    <None Remove="Resources\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Overpass-Regular.ttf" />
+    <Resource Include="Resources\Images\close.ico" />
+    <Resource Include="Resources\Images\logo.ico" />
+    <Resource Include="Resources\Images\multi-desktop.ico" />
+    <Resource Include="Resources\Images\pin.ico" />
+    <Resource Include="Resources\index.js" />
+  </ItemGroup>
+
+</Project>

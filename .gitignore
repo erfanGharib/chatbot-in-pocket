@@ -1,0 +1,7 @@
+bin
+obj
+.vs
+*.ai
+*.csproj.user
+*.csproj.userosscache
+*.csproj.userprefs
