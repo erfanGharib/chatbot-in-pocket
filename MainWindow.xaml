@@ -17,9 +17,8 @@
     MinWidth="450" 
     MaxWidth="450" 
     AllowsTransparency="True" 
+    Deactivated="Window_Deactivated"
     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-    PreviewMouseDown="Window_PreviewMouseDown" 
-    MouseLeave="Window_MouseLeave" 
     Icon="/Resources/Images/logo.ico" 
     FontFamily="{StaticResource Overpass}"
  >
