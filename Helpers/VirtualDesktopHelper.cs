@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Windows;
 
 namespace chatbot_in_pocket.Helpers
 {
@@ -13,25 +14,19 @@ namespace chatbot_in_pocket.Helpers
         private const int GWL_EXSTYLE = -20;
         private const int WS_EX_TOOLWINDOW = 0x00000080;
         private const int WS_EX_APPWINDOW = 0x00040000;
+        private static int firstWindowStyle = 0;
 
         public static void MakeWindowVisibleOnAllDesktops(IntPtr hwnd)
         {
-            int exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+            if (firstWindowStyle == 0)
+                firstWindowStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
 
-            exStyle &= ~WS_EX_APPWINDOW;
-            exStyle |= WS_EX_TOOLWINDOW;
-
-            SetWindowLong(hwnd, GWL_EXSTYLE, exStyle);
+            SetWindowLong(hwnd, GWL_EXSTYLE, WS_EX_TOOLWINDOW);
         }
 
         public static void RemoveWindowFromAllDesktops(IntPtr hwnd)
         {
-            int exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-
-            exStyle &= ~WS_EX_TOOLWINDOW;
-            exStyle |= WS_EX_APPWINDOW;
-
-            SetWindowLong(hwnd, GWL_EXSTYLE, exStyle);
+            SetWindowLong(hwnd, GWL_EXSTYLE, firstWindowStyle);
         }
     }
 }
