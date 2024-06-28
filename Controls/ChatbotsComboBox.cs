@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
+using static chatbot_in_pocket.Utils.SavedConfigUtil;
 
 namespace chatbot_in_pocket.Controls
 {
@@ -13,6 +14,7 @@ namespace chatbot_in_pocket.Controls
             public CheckBox checkBox { get; set; }
         }
 
+        private SavedConfig savedConfig = new SavedConfig();
         public List<Chatbot> chatbots;
         private MainWindow mainWindow;
 
@@ -60,9 +62,49 @@ namespace chatbot_in_pocket.Controls
                     Content = stackPanel
                 };
 
+                checkBox.Checked += CheckBox_Checked;
+
                 return comboBoxItem;
             }));
-            mainWindow.chatbotsComboBox.SelectedIndex = 0;
+
+            mainWindow.chatbotsComboBox.SelectedIndex = savedConfig.defaultChatbot;
+            var checkBox = GetComboBoxItemByIndex(savedConfig.defaultChatbot).checkBox;
+            checkBox.IsChecked = true;
+        }
+
+        private class ComboboxItemContent {
+            public CheckBox checkBox;
+            public Label label;
+        } 
+        private ComboboxItemContent GetComboBoxItemByIndex(int index)
+        {
+            var comboBoxItems = mainWindow.chatbotsComboBox.Items;
+            var stackPanelContent = (StackPanel)((ComboBoxItem)comboBoxItems[index]).Content;
+            var currentCheckBox = (CheckBox)(stackPanelContent).Children[0];
+            var currentLabel = (Label)(stackPanelContent).Children[1];
+
+            return new ComboboxItemContent()
+            {
+                checkBox = currentCheckBox,
+                label = currentLabel
+            };
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var comboBoxItems = mainWindow.chatbotsComboBox.Items;
+            var senderParent = (sender as CheckBox).Parent as StackPanel;
+
+            for (int index = 0; index < comboBoxItems.Count; index++)
+            {
+                var currentComboBoxItem = GetComboBoxItemByIndex(index);
+                if (currentComboBoxItem.label.Content != ((Label)senderParent.Children[1]).Content)
+                {
+                    currentComboBoxItem.checkBox.IsChecked = false;
+                    continue;
+                }
+
+                savedConfig.defaultChatbot = index;
+            }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
