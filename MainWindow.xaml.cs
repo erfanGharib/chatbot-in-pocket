@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using chatbot_in_pocket.Controls;
 using chatbot_in_pocket.Utils;
+using Microsoft.Web.WebView2.Core;
 
 namespace chatbot_in_pocket
 {
@@ -14,9 +16,14 @@ namespace chatbot_in_pocket
     {
         public bool isWindowPinned = false;
         public bool isHidden = true;
+        private static string homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        public static string configsDirPath = Path.Combine(homePath, "Documents", ".chatbot-in-pocket");
 
         public MainWindow()
         {
+            if (!Directory.Exists(configsDirPath))
+                Directory.CreateDirectory(configsDirPath);
+
             SavedConfigUtil.InitConfig();
 
             var webView = new WebView();

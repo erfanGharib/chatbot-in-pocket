@@ -11,16 +11,27 @@ namespace chatbot_in_pocket.Controls
         private MainWindow mainWindow;
         public double loc = 0;
 
-        public void InitializeWebView(MainWindow _mainWindow)
+        public async void InitializeWebView(MainWindow _mainWindow)
         {
             isHidden = true;
             mainWindow = _mainWindow;
+
+            var environment = await CoreWebView2Environment.CreateAsync(
+                null, 
+                Path.Combine(
+                    MainWindow.configsDirPath, 
+                    "WebView2Data"
+                ),
+                new CoreWebView2EnvironmentOptions(null, "en", null)
+            );
 
             mainWindow.webView.CoreWebView2InitializationCompleted += WebView21_CoreWebView2InitializationCompleted;
             mainWindow.webView.WebMessageReceived += WebView21_WebMessageReceived;
             mainWindow.Deactivated += Window_Deactivated;
 
             HideWindow();
+
+            await mainWindow.webView.EnsureCoreWebView2Async(environment);
         }
 
         private void Window_Deactivated(object sender, EventArgs e)

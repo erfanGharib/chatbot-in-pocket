@@ -64,7 +64,7 @@
                 MaxHeight="31" 
                 Width="100"
             />
-            <Wpf:WebView2 x:Name="webView" Source="http://google.com" Margin="0,28,0,0"/>
+            <Wpf:WebView2 x:Name="webView" Margin="0,28,0,0"/>
 
             <Button ToolTip="Show On All Desktops" x:Name="showOnAllDesktopsButton" Width="27" Height="27" VerticalAlignment="Top" Margin="367,0,54,0" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0,0,0,0">
                 <Image Height="9" Width="9">

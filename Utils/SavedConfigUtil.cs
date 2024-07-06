@@ -7,7 +7,7 @@ namespace chatbot_in_pocket.Utils
     {
         public delegate void UpdateHandler(SavedConfig savedConfig);
 
-        private static string filePath = "./saved_configs.json";
+        private static string filePath = "";
         private static int _defaultChatbot = 0;
         private static bool _isShowedOnAllDesktops = false;
         public static event UpdateHandler OnUpdateConfig;
@@ -67,8 +67,10 @@ namespace chatbot_in_pocket.Utils
 
         public static void InitConfig()
         {
-            var savedConfig = new SavedConfig();
-            var config = ReadConfig();
+            filePath = Path.Combine(MainWindow.configsDirPath, "saved_configs.json");
+
+            var savedConfig  = new SavedConfig();
+            var config       = ReadConfig();
             var parsedConfig = ParseJson(config);
 
             if(!savedConfig.Equals(parsedConfig))
