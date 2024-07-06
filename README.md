@@ -1,5 +1,4 @@
-# Chatbot In Pocket
-
+# <img width="30" alt="chatbot-in-pocket application logo" src="logo.png" />  Chatbot In Pocket
 <img src="preview.gif"><br>
 Quick access to your favourite chatbot.
 
@@ -13,6 +12,4 @@ Quick access to your favourite chatbot.
 - Choose default chatbot
 
 ## Installation
-<!-- Download [Setup File](https://github.com/erfanGharib/chatbot-in-pocket/releases/latest/download/chatbot-in-pocket-setup.msi) and follow the installation wizard. -->
-Release is coming soon.
-
+Download [Setup File](https://github.com/erfanGharib/chatbot-in-pocket/releases/latest/download/Chatbot-In-Pocket-Setup.msi) and follow the installation wizard.

@@ -3,18 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chatbot-in-pocket", "chatbot-in-pocket.csproj", "{E933C521-5B4C-4AF2-B909-BA62453C74EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chatbot-in-pocket", "chatbot-in-pocket.csproj", "{E933C521-5B4C-4AF2-B909-BA62453C74EF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{BE1493BD-685C-4AA2-A6C9-9B62AC7264FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Debug|x86.Build.0 = Debug|Any CPU
 		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{E933C521-5B4C-4AF2-B909-BA62453C74EF}.Release|x86.Build.0 = Release|Any CPU
+		{BE1493BD-685C-4AA2-A6C9-9B62AC7264FB}.Debug|Any CPU.ActiveCfg = Debug
+		{BE1493BD-685C-4AA2-A6C9-9B62AC7264FB}.Debug|x86.ActiveCfg = Debug
+		{BE1493BD-685C-4AA2-A6C9-9B62AC7264FB}.Release|Any CPU.ActiveCfg = Release
+		{BE1493BD-685C-4AA2-A6C9-9B62AC7264FB}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
