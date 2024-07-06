@@ -12,16 +12,13 @@
     Background="#FF212121" 
     Foreground="#FFE8E8E8" 
     WindowStyle="None" 
-    MinHeight="670" 
-    MaxHeight="670" 
+    MaxHeight="900" 
     MinWidth="450" 
     MaxWidth="450" 
     AllowsTransparency="True" 
     ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-    PreviewMouseDown="Window_PreviewMouseDown" 
-    MouseLeave="Window_MouseLeave" 
     Icon="/Resources/Images/logo.ico" 
-    FontFamily="{StaticResource Overpass}"
+    FontFamily="{StaticResource Overpass}" 
  >
     <Window.Resources>
         <!-- Remove button hover background -->

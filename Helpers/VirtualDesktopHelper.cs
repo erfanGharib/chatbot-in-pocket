@@ -26,7 +26,7 @@ namespace chatbot_in_pocket.Helpers
 
         public static void RemoveWindowFromAllDesktops(IntPtr hwnd)
         {
-            SetWindowLong(hwnd, GWL_EXSTYLE, firstWindowStyle);
+            SetWindowLong(hwnd, GWL_EXSTYLE, WS_EX_APPWINDOW);
         }
     }
 }

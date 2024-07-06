@@ -55,9 +55,9 @@ namespace chatbot_in_pocket.Utils
             {
                 return File.ReadAllText(filePath);
 
-            } catch(FileNotFoundException)
+            } catch(Exception)
             {
-                return "";
+                return "{}";
             }
         }
         private static SavedConfig ParseJson(string json)

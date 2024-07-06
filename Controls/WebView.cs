@@ -16,24 +16,28 @@ namespace chatbot_in_pocket.Controls
             isHidden = true;
             mainWindow = _mainWindow;
 
-            loc = mainWindow.Width;
-
             mainWindow.webView.CoreWebView2InitializationCompleted += WebView21_CoreWebView2InitializationCompleted;
             mainWindow.webView.WebMessageReceived += WebView21_WebMessageReceived;
             mainWindow.Deactivated += Window_Deactivated;
 
-            HideForm();
+            HideWindow();
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            HideForm();
+            HideWindow();
         }
 
         private async void WebView21_CoreWebView2InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
-            string script = File.ReadAllText("index.js");
-            await mainWindow.webView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(script);
+            try
+            {
+                string script = File.ReadAllText("index.js");
+                await mainWindow.webView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(script);
+            } catch(FileNotFoundException)
+            {
+                Console.WriteLine("no index.js found");
+            }
         }
 
         public struct JsonObject
@@ -45,10 +49,10 @@ namespace chatbot_in_pocket.Controls
         {
             JsonObject jsonObject = JsonConvert.DeserializeObject<JsonObject>(e.WebMessageAsJson);
             if (jsonObject.key == "click" && isHidden)
-                ShowForm();
+                ShowWindow();
         }
 
-        public void ShowForm()
+        public void ShowWindow()
         {
             isHidden = false;
             loc = 0;
@@ -58,21 +62,23 @@ namespace chatbot_in_pocket.Controls
                 loc += 4;
                 mainWindow.Left = SystemParameters.WorkArea.Width - loc + 2;
             }
+
+            loc = 0;
         }
 
-        public void HideForm()
+        public void HideWindow()
         {
-            // prevent window from hiding if part of application clicked
-            if (mainWindow.isWindowClicked) return;
             // prevent window from hiding if window is pinned
             if (mainWindow.isWindowPinned) return;
+            // run this method when the window has been shown
+            if (loc != 0) return;
 
             isHidden = true;
             loc = 0;
 
             while (loc <= mainWindow.Width)
             {
-                mainWindow.Left = SystemParameters.WorkArea.Width - mainWindow.Width + loc - 3;
+                mainWindow.Left = SystemParameters.WorkArea.Width - mainWindow.Width + loc - 6;
                 loc += 4;
             }
         }
